@@ -1,12 +1,13 @@
-const Feedback = ({ option }) => {
+// Feedback.jsx
+import React from "react";
+
+const Feedback = ({ feedback, updateFeedback }) => {
   return (
     <div>
       <ul>
-        <li>Good:</li>
-        <li>Neutral:</li>
-        <li>Bad:</li>
-        <li>Total:</li>
-        <li>Positive:</li>
+        <li>Good: {feedback.good}</li>
+        <li>Neutral: {feedback.neutral}</li>
+        <li>Bad: {feedback.bad}</li>
       </ul>
     </div>
   );
