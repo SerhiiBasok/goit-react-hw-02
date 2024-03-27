@@ -1,8 +1,9 @@
+// App.jsx
 import React, { useState, useEffect } from "react";
 import Options from "../Options/Options.jsx";
 import Feedback from "../Feedback/Feedback.jsx";
 import Descriptions from "../Description/Descriptions.jsx";
-import Notification from "../Feedback/Notification.jsx";
+import Notification from "../Notification/Notification.jsx";
 import TotalFeedbacks from "../Feedback/TotalFeedbacks.jsx";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
     bad: 0,
   };
   const [feedback, setFeedback] = useState(initialFeedback);
+
   useEffect(() => {
     localStorage.setItem("feedback", JSON.stringify(feedback));
   }, [feedback]);
@@ -28,7 +30,7 @@ const App = () => {
     totalFeedback === 0 ? 0 : Math.round((feedback.good / totalFeedback) * 100);
 
   const resetFeedback = () => {
-    setFeedback({ good: 0, neutral: 0, bad: 0, total: 0, positive: 0 });
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
   };
 
   return (
@@ -41,7 +43,7 @@ const App = () => {
       />
       {totalFeedback > 0 && (
         <>
-          <Feedback feedback={feedback} />
+          <Feedback feedback={feedback} updateFeedback={updateFeedback} />
           <TotalFeedbacks
             totalFeedback={totalFeedback}
             positivePercentage={positivePercentage}
