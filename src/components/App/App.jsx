@@ -4,7 +4,6 @@ import Options from "../Options/Options.jsx";
 import Feedback from "../Feedback/Feedback.jsx";
 import Descriptions from "../Description/Descriptions.jsx";
 import Notification from "../Notification/Notification.jsx";
-import TotalFeedbacks from "../Feedback/TotalFeedbacks.jsx";
 
 const App = () => {
   const initialFeedback = JSON.parse(localStorage.getItem("feedback")) || {
@@ -43,8 +42,9 @@ const App = () => {
       />
       {totalFeedback > 0 && (
         <>
-          <Feedback feedback={feedback} updateFeedback={updateFeedback} />
-          <TotalFeedbacks
+          <Feedback
+            feedback={feedback}
+            updateFeedback={updateFeedback}
             totalFeedback={totalFeedback}
             positivePercentage={positivePercentage}
           />
